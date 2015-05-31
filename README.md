@@ -2,14 +2,31 @@
 
 This is one of many attempts of finding a good way to present statistics. This uses Xataface for the job. Looks promesing
 
+##Demo
+
+To see the interface in use go to: http://oastat.poulsander.com/oastat-xata/ 
+
 ##License
 
-GPL v2 or later
+GPL v2 or any later version
 
 ##Requirements
 
-1. A working xetaface 2.1.2 installation. 
+1. A working xataface 2.1.2 installation. 
+2. A working installation of oastat installation using a mySQL database.
 
 ##Installation
 
-Once I figure out how to install it I will tell...
+Currently it is not that easy to install. 
+
+Clone oastat-xata from github.
+Install xataface 2.1.2 on your server.
+Install oastat (https://github.com/sago007/oastat) and set it to use mysql. Assuming the database is called "oastat"
+Create a new database called oastat_xata on the same server. Execute the create_views.sql on this server. The views refer to the "oastat"-database.
+Create a user that has at least SELECT access to oastat and full access to oastat_xata. 
+
+Adjust conf.ini: The [_database] section must match the login information to oastat_xata database.
+Adjust index.php: The two last lines must match the path to the xataface 2.1.2 installation. 
+  The second to last line must point to the local location of xataface-2.1.2. Be default it is assumed to be on the same level as the oastat-xata installation.
+  The last line must point to the web assessible location of xataface-2.1.2. 
+
