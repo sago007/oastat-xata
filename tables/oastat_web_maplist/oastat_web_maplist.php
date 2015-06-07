@@ -11,7 +11,8 @@ class tables_oastat_web_maplist {
         return array(
             'content' => '<img src="images/oa640x400/'.$record->val('mapname').'.jpg" alt="Levelshot from '.$record->val('mapname').'"/>',
             'class' => 'main',
-            'order' => '-1'
+            'label' => 'Level shot',
+            'order' => -1
         );
     }
 }

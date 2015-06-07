@@ -16,7 +16,7 @@ class tables_oastat_web_games {
     return array(
         'content' => 'Information about the game',
         'class' => 'main',
-        'order' => '-1'
+        'order' => -1
     );
     }
     
