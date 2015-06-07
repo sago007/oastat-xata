@@ -18,6 +18,6 @@ class tables_oastat_web_games {
         'class' => 'main',
         'order' => '-1'
     );
-}
+    }
     
 }
