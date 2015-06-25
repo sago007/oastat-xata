@@ -52,11 +52,11 @@ class tables_oastat_web_games {
     
     function section__weapons(&$record) {
         $gamenumber=$record->val('gamenumber');
-        $stmt = $this->mysqli->prepare('SELECT w, c FROM oastat_web_kills_by_weapon_gamenumber WHERE gamenumber = ? ORDER BY c DESC');
+        $stmt = $this->mysqli->prepare('SELECT k.w, v.keyvalue, k.c FROM oastat_web_kills_by_weapon_gamenumber k INNER JOIN oastat_web_valuelists v ON v.keyid = k.w WHERE k.gamenumber = ? AND v.typename = \'weapon\' ORDER BY c DESC');
         $stmt->bind_param('i', $gamenumber );
         $stmt->execute();
         $stmt->store_result();
-        $stmt->bind_result($weapon, $kills);
+        $stmt->bind_result($weapon_number, $weapon, $kills);
         $content = 'Kills by weapon: <br/><table>';
         $content .= '<tr><td>Weapon</td><td>Kill count</td></tr>';
         while($stmt->fetch()) { 
