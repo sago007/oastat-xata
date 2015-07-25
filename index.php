@@ -3,7 +3,7 @@
 /*
 Default sorts
 */
-if ( !isset($_REQUEST['-sort']) and @$_REQUEST['-table'] == 'oastat_web_games'){
+if ( !isset($_REQUEST['-sort']) and (!isset($_REQUEST['-table']) or @$_REQUEST['-table'] == 'oastat_web_games') ){
     $_REQUEST['-sort'] = $_GET['-sort'] = 'time DESC';
 }
 
