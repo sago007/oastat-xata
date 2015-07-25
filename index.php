@@ -11,6 +11,10 @@ if ( !isset($_REQUEST['-sort']) and @$_REQUEST['-table'] == 'oastat_web_maplist'
     $_REQUEST['-sort'] = $_GET['-sort'] = 'c DESC';
 }
 
+if ( !isset($_REQUEST['-sort']) and @$_REQUEST['-table'] == 'oastat_web_kills_by_weapon' ){
+    $_REQUEST['-sort'] = $_GET['-sort'] = 'c DESC';
+}
+
 /**
  * File: index.php
  * Description:
