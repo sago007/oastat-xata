@@ -18,7 +18,7 @@ class tables_oastat_web_players {
         $playerid=$record->val('playerid');
         $stmt = $this->mysqli->prepare('SELECT ows.gamenumber, g.mapname FROM oastat_web_scores  ows '.
 'INNER JOIN oastat_web_games g ON ows.gamenumber = g.gamenumber '.
-'WHERE ows.p = 938 ORDER BY ows.gamenumber DESC LIMIT 10');
+'WHERE ows.p = ? ORDER BY ows.gamenumber DESC LIMIT 10');
         $stmt->bind_param('i', $playerid );
         $stmt->execute();
         $stmt->store_result();
