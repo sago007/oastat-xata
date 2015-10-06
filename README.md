@@ -25,8 +25,8 @@ Install oastat (https://github.com/sago007/oastat) and set it to use mysql. Assu
 Create a new database called oastat_xata on the same server. Execute the create_views.sql on this server. The views refer to the "oastat"-database.
 Create a user that has at least SELECT access to oastat and full access to oastat_xata. 
 
-Adjust conf.ini: The [_database] section must match the login information to oastat_xata database.
-Adjust index.php: The two last lines must match the path to the xataface 2.1.2 installation. 
+Copy conf.db.ini.sample to conf.db.ini and adjust conf.db.ini: The [_database] section must match the login information to oastat_xata database.
+Copy index.xata.php.sample to index.xata.php ad adjust index.xata.php: The two last lines must match the path to the xataface 2.1.2 installation. 
   The second to last line must point to the local location of xataface-2.1.2. Be default it is assumed to be on the same level as the oastat-xata installation.
   The last line must point to the web assessible location of xataface-2.1.2. 
 

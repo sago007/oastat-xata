@@ -1,0 +1,13 @@
+<?php
+
+/*
+This is a sample index.xata.php-file. 
+This assumes that public-api.php is located "../xataface-2.1.2/public-api.php" relativly to index.php
+It also assumes that users will access the site by going to http://oastat.poulsander.com/xataface-2.1.2
+You will likely want to change this lines to match your setup.
+Otherwise css etc. is loaded from oastat.poulsander.com instead of your own host and your changes will be ignored
+*/
+
+require_once '../xataface-2.1.2/public-api.php';
+df_init(__FILE__, 'http://oastat.poulsander.com/xataface-2.1.2')->display();
+

@@ -1,5 +1,15 @@
 <?php
 
+/**
+ * File: index.php
+ * Description:
+ * -------------
+ *
+ * This is an entry file for this Dataface Application.  To use your application
+ * simply point your web browser to this file.
+ */
+
+
 /*
 Default sorts
 */
@@ -15,14 +25,9 @@ if ( !isset($_REQUEST['-sort']) and @$_REQUEST['-table'] == 'oastat_web_kills_by
     $_REQUEST['-sort'] = $_GET['-sort'] = 'c DESC';
 }
 
-/**
- * File: index.php
- * Description:
- * -------------
- *
- * This is an entry file for this Dataface Application.  To use your application
- * simply point your web browser to this file.
- */
-require_once '../xataface-2.1.2/public-api.php';
-df_init(__FILE__, 'http://oastat.poulsander.com/xataface-2.1.2')->display();
+/*
+The site specific data is stored in index.xata.php
+See index.xata.php.sample for a sample
+*/
+include 'index.xata.php';
 

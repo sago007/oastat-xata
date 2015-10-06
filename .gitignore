@@ -7,5 +7,5 @@ templates_c
 
 #Customized
 
-index.php
 conf.db.ini
+index.xata.php
