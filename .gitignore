@@ -8,4 +8,4 @@ templates_c
 #Customized
 
 index.php
-conf.ini
+conf.db.ini

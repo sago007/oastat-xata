@@ -1,0 +1,5 @@
+[_database]
+host = "localhost"
+user = ""
+password = ""
+name = "oastat_xata"
