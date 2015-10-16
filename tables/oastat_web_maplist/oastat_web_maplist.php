@@ -6,6 +6,8 @@
  * and open the template in the editor.
  */
 
+require 'phplibs/common.php';
+
 class tables_oastat_web_maplist {
     var $mysqli;
     function __construct() {
@@ -25,24 +27,10 @@ class tables_oastat_web_maplist {
     
     function section__recent_games(&$record) {
         $mapname=$record->val('mapname');
-        $stmt = $this->mysqli->prepare('SELECT g.gamenumber FROM '.
+        $stmt = $this->mysqli->prepare('SELECT '.constant("recent_games_bind_result").' FROM '.
 'oastat_web_games g '.
 'WHERE g.mapname = ? ORDER BY g.gamenumber DESC LIMIT 10');
         $stmt->bind_param('s', $mapname );
-        $stmt->execute();
-        $stmt->store_result();
-        $stmt->bind_result($gamenumber);
-        $content = 'Recent games: <br/><table>';
-        $content .= '<tr><td>Game</td><td>Map</td></tr>';
-        while($stmt->fetch()) { 
-            $content .= '<tr><td><a href="index.php?-table=oastat_web_games&-action=browse&-recordid=oastat_web_games%3Fgamenumber%3D'.$gamenumber.'">'.$gamenumber.'</a></td><td>'.$mapname.'</td></tr>';
-        }
-        $content .= '</table>';
-        return array(
-            'content' => $content,
-            'class' => 'main',
-            'label' => 'Recent games',
-            'order' => 2
-        );
+        return recent_games($stmt);
     }
 }
