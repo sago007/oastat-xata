@@ -16,6 +16,17 @@ class tables_oastat_web_players {
         $this->mysqli = new mysqli($conf['_database']['host'], $conf['_database']['user'], $conf['_database']['password'], $conf['_database']['name']);
     }
     
+    function section__hello(&$record){
+        $playerhead = preg_replace("/[^a-zA-Z0-9_]/", "_", strtolower($record->val('headmodel') ) );
+        $playerhead = str_replace("_default","",$playerhead);
+        return array(
+            'content' => '<br/><img src="images/player_heads/128_128/'.$playerhead.'.png" alt="Picture of '.$playerhead.'"/>',
+            'class' => 'main',
+            'label' => 'Info',
+            'order' => -1
+        );
+    }
+    
     function section__recent_games(&$record) {
         $playerid=$record->val('playerid');
         $stmt = $this->mysqli->prepare('SELECT '.constant("recent_games_bind_result").' FROM oastat_web_scores  ows '.
