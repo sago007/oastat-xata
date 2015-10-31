@@ -1,3 +1,6 @@
 <FilesMatch "\.ini$">
 Deny from all
 </FilesMatch>
+<FilesMatch "~">
+Deny from all
+</FilesMatch>
