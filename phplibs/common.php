@@ -30,3 +30,15 @@ function recent_games(&$stmt) {
         'order' => 2
     );
 }
+
+/**
+ * This cleans a modelname the output will only containt a-z, 0-9 and '_'
+ * Ane "/default" will also be removed, so that "sarge" and "sarge/default" both result in "sarge"
+ * @param string $playerhead the raw name from db 
+ * @return string with clean name
+ */
+function clean_modelname($playerhead) {
+    $playerhead_clean = preg_replace("/[^a-z0-9_]/", "_", strtolower($playerhead) );
+    $playerhead_final = str_replace("_default","",$playerhead_clean);
+    return $playerhead_final;
+}

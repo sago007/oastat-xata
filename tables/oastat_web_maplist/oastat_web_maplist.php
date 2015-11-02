@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-require 'phplibs/common.php';
+require_once 'phplibs/common.php';
 
 class tables_oastat_web_maplist {
     var $mysqli;

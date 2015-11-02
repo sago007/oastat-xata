@@ -6,7 +6,7 @@
  * and open the template in the editor.
  */
 
-require 'phplibs/common.php';
+require_once 'phplibs/common.php';
 
 class tables_oastat_web_players {
     var $mysqli;
@@ -17,8 +17,7 @@ class tables_oastat_web_players {
     }
     
     function section__hello(&$record){
-        $playerhead = preg_replace("/[^a-zA-Z0-9_]/", "_", strtolower($record->val('headmodel') ) );
-        $playerhead = str_replace("_default","",$playerhead);
+        $playerhead = clean_modelname($record->val('headmodel'));
         return array(
             'content' => '<br/><img src="images/player_heads/128_128/'.$playerhead.'.png" alt="Picture of '.$playerhead.'"/>',
             'class' => 'main',

@@ -1,5 +1,8 @@
 <?php
 
+
+require_once 'phplibs/common.php';
+
 /* 
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -31,15 +34,16 @@ class tables_oastat_web_games {
     function section__scores(&$record) {
         
         $gamenumber=$record->val('gamenumber');
-        $stmt = $this->mysqli->prepare('SELECT p, nick, s FROM oastat_web_scores WHERE gamenumber = ? ORDER BY s DESC');
+        $stmt = $this->mysqli->prepare('SELECT p, nick, s, headmodel FROM oastat_web_scores WHERE gamenumber = ? ORDER BY s DESC');
         $stmt->bind_param('i', $gamenumber );
         $stmt->execute();
         $stmt->store_result();
-        $stmt->bind_result($playerid, $nick, $score);
+        $stmt->bind_result($playerid, $nick, $score, $headmodel_raw);
         $content = 'Scores: <br/><table>';
-        $content .= '<tr><td>Player</td><td>Score</td></tr>';
+        $content .= '<tr><td/><td>Player</td><td>Score</td></tr>';
         while($stmt->fetch()) { 
-            $content .= '<tr><td><a href="index.php?-table=oastat_web_players&-action=browse&-recordid=oastat_web_players%3Fplayerid%3D'.$playerid.'">'.$nick.'</a></td><td>'.$score.'</td></tr>';
+            $headmodel = clean_modelname($headmodel_raw);
+            $content .= '<tr><td><img src="images/player_heads/128_128/'.$headmodel.'.png" alt="'.$headmodel.'"/></td><td><a href="index.php?-table=oastat_web_players&-action=browse&-recordid=oastat_web_players%3Fplayerid%3D'.$playerid.'">'.$nick.'</a></td><td>'.$score.'</td></tr>';
         }
         $content .= '</table>';
         return array(
