@@ -30,3 +30,10 @@ Currently it is not that easy to install. It can be done using the following pro
     * The second to last line must point to the local location of xataface-2.1.2. Be default it is assumed to be on the same level as the oastat-xata installation.
     * The last line must point to the web assessible location of xataface-2.1.2. 
 
+##Updating
+
+
+  * Check permissions of files. The php files should usually have 644 permissions but are sometimes created with 664
+  * Execute create_views.sql again (mysql oastat_xata < create_views.sql)
+
+
