@@ -42,7 +42,7 @@ class tables_oastat_web_games {
         $content = 'Scores: <br/><table>';
         $content .= '<tr><td/><td>Player</td><td>Score</td></tr>';
         while($stmt->fetch()) { 
-            $headmodel = clean_modelname($headmodel_raw);
+            $headmodel = get_headmodel_that_exsists($headmodel_raw);
             $content .= '<tr><td><img src="images/player_heads/128_128/'.$headmodel.'.png" alt="'.$headmodel.'"/></td><td><a href="index.php?-table=oastat_web_players&-action=browse&-recordid=oastat_web_players%3Fplayerid%3D'.$playerid.'">'.$nick.'</a></td><td>'.$score.'</td></tr>';
         }
         $content .= '</table>';

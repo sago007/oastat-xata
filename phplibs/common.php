@@ -42,3 +42,11 @@ function clean_modelname($playerhead) {
     $playerhead_final = str_replace("_default","",$playerhead_clean);
     return $playerhead_final;
 }
+
+function get_headmodel_that_exsists($playerhead) {
+    $playerhead_final = clean_modelname($playerhead);
+    if (!file_exists('images/player_heads/128_128/'.$playerhead_final.'.png')) {
+        $playerhead_final = "fallback";
+    }
+    return $playerhead_final;
+}

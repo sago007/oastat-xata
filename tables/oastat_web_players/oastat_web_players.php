@@ -17,7 +17,8 @@ class tables_oastat_web_players {
     }
     
     function section__hello(&$record){
-        $playerhead = clean_modelname($record->val('headmodel'));
+        $playerhead = get_headmodel_that_exsists($record->val('headmodel'));
+        
         return array(
             'content' => '<br/><img src="images/player_heads/128_128/'.$playerhead.'.png" alt="Picture of '.$playerhead.'"/>',
             'class' => 'main',
